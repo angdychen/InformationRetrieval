@@ -21,7 +21,7 @@ public class Index {
             for (int DocId = 1; DocId <= 5; DocId++) {
                 String line = "";
                 BufferedReader br = new BufferedReader(new FileReader("docs/doc" + DocId));
-                line = br.readLine();                               // 读取一行
+                line = br.readLine().trim();                        // 读取一行
                 while (line != null) {
                     String[] text = line.split("[^A-Za-z]+");       // 正则表达式匹配,分离中其中以字母开头的词(即英文单词)
                     for (int i = 0; i < text.length; i++) {
@@ -57,7 +57,7 @@ public class Index {
             e.printStackTrace();
         }
 
-        // 字典输出
+        // 字典,倒排列表输出
         BufferedWriter out = new BufferedWriter(new FileWriter("Dictionary.txt"));
         Iterator it = map.keySet().iterator();
         while (it.hasNext()) {

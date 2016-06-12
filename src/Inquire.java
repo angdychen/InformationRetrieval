@@ -100,8 +100,7 @@ public class Inquire {
             System.out.println("\t查询格式: word1 and/or word2");
             Scanner input = new Scanner(System.in);
             String line = input.nextLine();
-            if(line.toUpperCase().equals("E"))
-            {
+            if (line.toUpperCase().equals("E")) {
                 runing = false;
                 System.out.println("程序正常退出!");
                 break;
