@@ -1,7 +1,9 @@
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
 import java.util.*;
 
 
-public class BooleanInquire {
+public class Inquire {
     public int[] getvalue(String word, TreeMap<String, TreeMap<Integer, int[]>> map) {
         return map.get(word).firstEntry().getValue();
     }
@@ -92,10 +94,18 @@ public class BooleanInquire {
     }
 
     public void inquire(TreeMap<String, TreeMap<Integer, int[]>> map) {
-        while (true) {
-            System.out.println("2.请输入查询词项(支持布尔查询)：");
+        boolean runing = true;
+        while (runing) {
+            System.out.println("2.请输入查询词项(支持布尔查询): 退出(E)");
+            System.out.println("\t查询格式: word1 and/or word2");
             Scanner input = new Scanner(System.in);
             String line = input.nextLine();
+            if(line.toUpperCase().equals("E"))
+            {
+                runing = false;
+                System.out.println("程序正常退出!");
+                break;
+            }
             String[] InPut = line.split("\\s+");
             String[] tmp = new String[10];
             int j = 0;

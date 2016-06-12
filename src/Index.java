@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class CreateIndex {
+public class Index {
 
     public int getkey(TreeMap<Integer, int[]> Smap) {
         return  Smap.firstEntry().getKey();
@@ -17,10 +17,10 @@ public class CreateIndex {
         TreeMap<Integer, int[]> Smap;
         int[] arr;
         try {
-            // 这里假设文档集有10个文档
-            for (int DocId = 1; DocId <= 10; DocId++) {
+            // 这里假设文档集有5个文档
+            for (int DocId = 1; DocId <= 5; DocId++) {
                 String line = "";
-                BufferedReader br = new BufferedReader(new FileReader("docs/d" + DocId + ".txt"));
+                BufferedReader br = new BufferedReader(new FileReader("docs/doc" + DocId));
                 line = br.readLine();                               // 读取一行
                 while (line != null) {
                     String[] text = line.split("[^A-Za-z]+");       // 正则表达式匹配,分离中其中以字母开头的词(即英文单词)
@@ -58,7 +58,7 @@ public class CreateIndex {
         }
 
         // 字典输出
-        BufferedWriter out = new BufferedWriter(new FileWriter("dict.txt"));
+        BufferedWriter out = new BufferedWriter(new FileWriter("Dictionary.txt"));
         Iterator it = map.keySet().iterator();
         while (it.hasNext()) {
             String tmp = (String) it.next();    // 获取词项

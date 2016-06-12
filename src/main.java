@@ -1,31 +1,22 @@
-import jdk.nashorn.internal.ir.IndexNode;
-import jdk.nashorn.internal.ir.ReturnNode;
-import sun.plugin2.gluegen.runtime.BufferFactory;
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeMap;
-import java.util.List;
-
 
 public class main {
     public static void main(final String[] args) throws Exception {
         TreeMap<String, TreeMap<Integer, int[]>> tmpmap = new TreeMap<String, TreeMap<Integer, int[]>>();
-        TreeMap<Integer, int[]> docsMap;        // 文档频率 所在文档集的数组
+        TreeMap<Integer, int[]> docsMap;                        // 文档频率 所在文档集的数组
         System.out.println("1.是否需要重新生成外部字典? 是(Y), 否(N)");
         Scanner command = new Scanner(System.in);
         String command1 = command.next();
         // 1.重新生成字典,并直接载入内存中
         if (command1.toLowerCase().equals("y")) {
-            CreateIndex createIndex = new CreateIndex();
+            Index createIndex = new Index();
             tmpmap = createIndex.Create();
         } else {
             // 2.从外部字典载入
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("dict.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("Dictionary.txt"));
             String line = bufferedReader.readLine();
             while (line != null) {
                 line = line.replaceAll("\\s+", " ");            // 处理字符串中的多空格问题
@@ -42,7 +33,7 @@ public class main {
                 line = bufferedReader.readLine();
             }
         }
-        BooleanInquire search = new BooleanInquire();
+        Inquire search = new Inquire();
         search.inquire(tmpmap);
     }
 }
